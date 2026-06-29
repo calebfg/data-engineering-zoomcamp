@@ -81,10 +81,16 @@ services:
               basePath: "/app/storage"
           queue:
             type: postgres
+          ai:
+            type: gemini
+            gemini:
+              model-name: gemini-2.5-flash
+              api-key: ${GEMINI_API_KEY}
           tasks:
             tmpDir:
               path: /tmp/kestra-wd/tmp
           url: http://localhost:8080/
+      SECRET_GCP_CREDS: "${SECRET_GCP_CREDS}"
     ports:
       - "8080:8080"
       - "8081:8081"
